@@ -16,8 +16,20 @@ import NoPage from './pages/NoPage'
           maybe this in the future...
  */
 export default function App() {
-  return (
-    <BrowserRouter>
+  // return (
+  //   <BrowserRouter>
+  //     <Routes>
+  //       <Route path="/reactCP/build/" element={<Layout />}>
+  //         <Route index element={<Home />} />
+  //         <Route path="/reactCP/build/about" element={<About />} />
+  //         <Route path="/reactCP/build/newpost" element={<NewPost />} />
+  //         <Route path="/reactCP/build/*" element={<NoPage />} />
+  //       </Route>
+  //     </Routes>
+  //   </BrowserRouter>
+  // );
+    return (
+    <BrowserRouter basename="/reactCP/build">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
