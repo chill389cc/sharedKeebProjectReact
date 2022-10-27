@@ -42,7 +42,7 @@ const Layout = () => {
               <p>Authors:</p>
               <p>Caleb Hill</p>
               <p>Ethan Borsky</p>
-              <a href="https://github.com/chill389cc/sharedKeyboardProjectReact">GitHub Repo</a>
+              <a href="https://github.com/chill389cc/sharedKeebProjectReact">GitHub Repo</a>
             </div>
           </div>
         </div>
