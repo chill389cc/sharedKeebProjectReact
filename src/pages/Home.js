@@ -79,7 +79,7 @@ const Home = () => {
   const deletePost = async (tempId) => {
     let response
     try {
-      response = await fetch(`/api/posts/${tempId}`, {
+      response = await fetch(`/apj/posts/${tempId}`, {
         method: 'DELETE'
       })
     } catch (e) {
@@ -96,7 +96,7 @@ const Home = () => {
   const savePost = async () => {
     let response
     try {
-      response = await fetch(`/api/posts/${id}`, {
+      response = await fetch(`/apj/posts/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -124,7 +124,7 @@ const Home = () => {
     setIsOpen(!isOpen)
   }
   const fetchPosts = async () => {
-    const response = await fetch('/api/posts')
+    const response = await fetch('/apj/posts')
     const fetchedPosts = await response.json()
     setPosts(fetchedPosts.posts)
   }
@@ -134,7 +134,7 @@ const Home = () => {
 
   const getPosts = async () => {
     try {
-      const response = await fetch('/api/posts')
+      const response = await fetch('/apj/posts')
       const fetchedPosts = await response.json()
       setPosts(fetchedPosts.posts)
     } catch (e) {
@@ -200,7 +200,7 @@ const Home = () => {
       </div>
       <div className="col-sm-4">
         <div className="action-center">
-          <Link className="btn btn-primary btn-lg btn-block" to="/mongoCP/build/NewPost">
+          <Link className="btn btn-primary btn-lg btn-block" to="/NewPost">
             New Post
           </Link>
         </div>

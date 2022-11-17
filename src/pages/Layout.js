@@ -10,7 +10,7 @@ const Layout = () => {
   const login = async () => {
     let response
     try {
-      response = await fetch('/api/user/' + username + '/' + password)
+      response = await fetch('/apj/user/' + username + '/' + password)
     } catch (e) {
       console.log('error',JSON.stringify(e))
       return
@@ -36,7 +36,7 @@ const Layout = () => {
           </div>
       </div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <Link className="navbar-brand" to="/mongoCP/build/">Keyboard Klique</Link>
+        <Link className="navbar-brand" to="/">Keyboard Klique</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -44,10 +44,10 @@ const Layout = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/mongoCP/build/">Home<span className="sr-only">(current)</span></Link>
+              <Link className="nav-link" to="/">Home<span className="sr-only">(current)</span></Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/mongoCP/build/About">About</Link>
+              <Link className="nav-link" to="/About">About</Link>
             </li>
           </ul>
           <ul className="navbar-nav ml-auto">

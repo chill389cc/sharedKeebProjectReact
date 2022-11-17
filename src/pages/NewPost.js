@@ -21,7 +21,7 @@ const About = () => {
     }
     let response
     try {
-      response = await fetch('/api/posts', {
+      response = await fetch('/apj/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ const About = () => {
     if (response.status === 200) {
       let fetchedPost = await response.json()
       console.log(fetchedPost)
-      navigate('/mongoCP/build/')
+      navigate('/')
     } else {
       console.log('error making post ', response)
     }

@@ -51,7 +51,7 @@ const User = mongoose.model('User', userSchema);
 const Post = mongoose.model('Post', postSchema);
 
 /////// users
-app.get('/api/user', async (req, res) => {
+app.get('/apj/user', async (req, res) => {
   try {
     let users = await User.find();
     res.send({users});
@@ -61,7 +61,7 @@ app.get('/api/user', async (req, res) => {
   }
 });
 
-app.get('/api/user/:username/:password', async (req, res) => {
+app.get('/apj/user/:username/:password', async (req, res) => {
   try {
     let user = await User.find({ username: req.params.username });
     if (user.length === 0) {
@@ -89,7 +89,7 @@ app.get('/api/user/:username/:password', async (req, res) => {
   }
 });
 
-app.post('/api/user', async (req, res) => {
+app.post('/apj/user', async (req, res) => {
   const user = new User({
     username: req.body.username,
     password: req.body.password
@@ -104,7 +104,7 @@ app.post('/api/user', async (req, res) => {
 });
 
 /////// posts
-app.get('/api/posts', async (req, res) => {
+app.get('/apj/posts', async (req, res) => {
   try {
     let posts = await Post.find();
     res.send({ posts });
@@ -114,7 +114,7 @@ app.get('/api/posts', async (req, res) => {
   }
 });
 
-app.put('/api/posts/:id', async (req, res) => {
+app.put('/apj/posts/:id', async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     post.title = req.body.title
@@ -127,7 +127,7 @@ app.put('/api/posts/:id', async (req, res) => {
   }
 });
 
-app.get('/api/posts/:id', async (req, res) => {
+app.get('/apj/posts/:id', async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
     res.send({ post });
@@ -137,7 +137,7 @@ app.get('/api/posts/:id', async (req, res) => {
   }
 });
 
-app.post('/api/posts', async (req, res) => {
+app.post('/apj/posts', async (req, res) => {
   const post = new Post({
     title: req.body.title,
     subject: req.body.subject,
@@ -154,7 +154,7 @@ app.post('/api/posts', async (req, res) => {
   }
 });
 
-app.delete('/api/posts/:id', async (req, res) => {
+app.delete('/apj/posts/:id', async (req, res) => {
   try {
     await Post.deleteOne({
       _id: req.params.id
@@ -166,5 +166,5 @@ app.delete('/api/posts/:id', async (req, res) => {
   }
 });
 
-const port = 3000;
+const port = 3001;
 app.listen(port, () => console.log(`Server listening on port ${port}!`));
