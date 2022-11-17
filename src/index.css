@@ -7,6 +7,31 @@
 /*  -moz-osx-font-smoothing: grayscale;*/
 /*}*/
 
+.popup-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  /*display: none;*/
+}
+
+.popup-button {
+  margin: 5px;
+}
+
+.clickyMode {
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.loginButton {
+    margin-left: 5px;
+}
+
 /* Default react stuff */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -32,6 +57,7 @@ navbar styles
  */
 .navbar {
   margin-bottom: 30px;
+  z-index: 10 !important;
 }
 
 /*

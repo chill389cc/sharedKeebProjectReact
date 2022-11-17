@@ -16,7 +16,7 @@ const About = () => {
             <p>We hope you feel welcome here. Feel free to make a post, ask a question, or leave a comment. Thanks for
               visiting!</p>
             <p className="lead">
-              <Link className="btn btn-primary btn-lg" to="/NewPost" role="button">Make a post</Link>
+              <Link className="btn btn-primary btn-lg" to="/mongoCP/build/NewPost" role="button">Make a post</Link>
             </p>
           </div>
         </div>

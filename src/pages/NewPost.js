@@ -1,4 +1,52 @@
+import { useOutletContext, useNavigate } from "react-router-dom";
+import {useState} from "react";
+
+
 const About = () => {
+  const [user, setUser] = useOutletContext()
+  const [title, setTitle] = useState('');
+  const [subject, setSubject] = useState('');
+  const [body, setBody] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  let navigate = useNavigate()
+
+
+  const makePost = async () => {
+    if (!user) {
+      alert('You must be logged in to make a post')
+      return
+    } else if (!title || !subject || !body || !imageUrl) {
+      alert('Please fill in all fields')
+      return
+    }
+    let response
+    try {
+      response = await fetch('/api/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title,
+          subject,
+          body,
+          imageUrl,
+          user: user.username
+        })
+      })
+    } catch (e) {
+      console.log('error',JSON.stringify(e))
+      return
+    }
+    if (response.status === 200) {
+      let fetchedPost = await response.json()
+      console.log(fetchedPost)
+      navigate('/mongoCP/build/')
+    } else {
+      console.log('error making post ', response)
+    }
+  }
+
   return (
     <>
       <div className="container">
@@ -7,30 +55,30 @@ const About = () => {
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">New Post</h5>
-                <form action="#" method="post" encType="multipart/form-data">
+                {/*<form>*/}
                   <div className="form-group">
                     <label htmlFor="shortTitle">Short Title</label>
-                    <input type="text" className="form-control" id="shortTitle" name="title" placeholder="Enter title"/>
+                    <input type="text" className="form-control" id="shortTitle" name="title" onChange={e => setTitle(e.target.value)} placeholder="Enter title"/>
                   </div>
                   <div className="form-group">
                     <label htmlFor="longTitle">Detailed Title</label>
-                    <input type="text" className="form-control" id="longTitle" name="title" placeholder="Enter title"/>
+                    <input type="text" className="form-control" id="longTitle" name="title" onChange={e => setSubject(e.target.value)} placeholder="Enter title"/>
                   </div>
                   <div className="form-group">
                     <label htmlFor="description">Description</label>
-                    <textarea className="form-control" id="description" name="description" rows="3"></textarea>
+                    <textarea className="form-control" id="description" name="description" onChange={e => setBody(e.target.value)} rows="3"></textarea>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="image">Image(s)</label>
-                    <input type="file" className="form-control-file" multiple="multiple" id="image" name="image"/>
+                    <label htmlFor="image">URL to Image (upload it on a site like imgur and post the url here):</label>
+                    <input type="text" className="form-control-file" multiple="multiple" onChange={e => setImageUrl(e.target.value)} id="image" name="image"/>
                   </div>
                   <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input type="text" className="form-control" id="username" name="username"
-                           placeholder="Enter username"/>
+                           placeholder={user.username} disabled/>
                   </div>
-                  <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+                  <button type="submit" className="btn btn-primary" onClick={makePost}>Submit</button>
+                {/*</form>*/}
               </div>
             </div>
           </div>
